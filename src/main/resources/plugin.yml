@@ -1,0 +1,10 @@
+name: SuperHot
+version: 1.0
+main: net.kunmc.lab.superhot.SuperHot
+api-version: 1.16
+commands:
+  SuperHot:
+    permission: superhot.c
+permissions:
+  superhot.c:
+    default: op
