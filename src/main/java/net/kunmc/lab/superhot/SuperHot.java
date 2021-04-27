@@ -10,6 +10,8 @@ import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.util.Vector;
+
 import java.util.UUID;
 
 
@@ -71,6 +73,8 @@ public final class SuperHot extends JavaPlugin {
             player.getAttribute(Attribute.GENERIC_ATTACK_SPEED).removeModifier(DECELERATION);
             player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).removeModifier(ACCELERATION);
             player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).removeModifier(DECELERATION);
+            player.setAI(true);
+            player.setVelocity(new Vector());
         });
     }
 

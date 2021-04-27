@@ -1,5 +1,5 @@
 name: SuperHot
-version: 1.0
+version: 1.01
 main: net.kunmc.lab.superhot.SuperHot
 api-version: 1.16
 commands:

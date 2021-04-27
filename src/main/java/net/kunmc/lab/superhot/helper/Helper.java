@@ -70,6 +70,7 @@ public class Helper {
                 living.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).removeModifier(DECELERATION);
                 living.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).addModifier(ACCELERATION);
                 living.setAI(true);
+                living.setVelocity(new Vector());
                 if (living instanceof Player) {
                     Player player = (Player) living;
                     player.getAttribute(Attribute.GENERIC_ATTACK_SPEED).removeModifier(ACCELERATION);
@@ -99,6 +100,7 @@ public class Helper {
                 living.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).removeModifier(DECELERATION);
                 living.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).addModifier(DECELERATION);
                 living.setAI(true);
+                living.setVelocity(new Vector());
                 if (living instanceof Player) {
                     Player player = (Player) living;
                     player.getAttribute(Attribute.GENERIC_ATTACK_SPEED).removeModifier(ACCELERATION);
@@ -127,6 +129,7 @@ public class Helper {
                 living.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).removeModifier(ACCELERATION);
                 living.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).removeModifier(DECELERATION);
                 living.setAI(true);
+                living.setVelocity(new Vector());
                 if (living instanceof Player) {
                     Player player = (Player) living;
                     player.getAttribute(Attribute.GENERIC_ATTACK_SPEED).removeModifier(ACCELERATION);

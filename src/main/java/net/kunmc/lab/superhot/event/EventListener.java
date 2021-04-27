@@ -23,6 +23,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.Vector;
 
 import java.util.List;
 import java.util.UUID;
@@ -40,7 +41,17 @@ public class EventListener implements Listener {
     private static AttributeModifier DECELERATION = new AttributeModifier(DECELERATION_ID, "Decelerate entity", -0.5D, AttributeModifier.Operation.MULTIPLY_SCALAR_1);
 
     @EventHandler
-    public void onPlayerMove(EntityMoveEvent event) {
+    public void onPlayerMove(PlayerMoveEvent event) {
+        if(SuperHot.main) {
+            if (Helper.clockHolder != null || ConstantEvent.kunMovementState == ConstantEvent.KunMovementState.Stopping) {
+                if (!Helper.isClockHolder(event.getPlayer()) && !Helper.isKun(event.getPlayer())) {
+                    event.setCancelled(true);
+                }
+            }
+        }
+    }
+    @EventHandler
+    public void onEntityMove(EntityMoveEvent event) {
         if(SuperHot.main) {
             if (Helper.clockHolder != null || ConstantEvent.kunMovementState == ConstantEvent.KunMovementState.Stopping) {
                 if (!Helper.isClockHolder(event.getEntity()) && !Helper.isKun(event.getEntity())) {
@@ -147,6 +158,8 @@ public class EventListener implements Listener {
         player.getAttribute(Attribute.GENERIC_ATTACK_SPEED).removeModifier(DECELERATION);
         player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).removeModifier(ACCELERATION);
         player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).removeModifier(DECELERATION);
+        player.setAI(true);
+        player.setVelocity(new Vector());
     }
 
     @EventHandler
@@ -156,6 +169,8 @@ public class EventListener implements Listener {
         player.getAttribute(Attribute.GENERIC_ATTACK_SPEED).removeModifier(DECELERATION);
         player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).removeModifier(ACCELERATION);
         player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).removeModifier(DECELERATION);
+        player.setAI(true);
+        player.setVelocity(new Vector());
    }
 
 }
